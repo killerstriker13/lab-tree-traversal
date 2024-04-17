@@ -51,6 +51,13 @@ public class BinaryTree<T> implements Iterable<T> {
     dump(pen, root, "");
   } // dump(PrintWriter)
 
+  public void elements01(PrintWriter pen){
+    elements01(pen, root);
+  }
+
+  public void elements02(PrintWriter pen){
+    elements02(pen, root);
+  }
   /**
    * Get an iterator for the tree.
    */
@@ -85,6 +92,40 @@ public class BinaryTree<T> implements Iterable<T> {
         dump(pen, node.right, indent + "  ");
       } // if has children
     } // else
+  } // dump
+
+    /**
+   * Dump a portion of the tree to some output location.
+   */
+  void elements01(PrintWriter pen, BinaryTreeNode<T> node) {
+    if (node == null) {
+      // do nothing pen.print(" ");
+    } else {
+      pen.print(node.value + " ");
+      if ((node.left != null) || (node.right != null)) {
+        elements01(pen, node.left);
+        elements01(pen, node.right);
+      } // if has children
+    } // else
+    pen.flush();
+  } // dump
+  
+   /**
+   * Dump a portion of the tree to some output location.
+   */
+  void elements02(PrintWriter pen, BinaryTreeNode<T> node) {
+    if (node == null) {
+      // do nothing pen.print(" ");
+    } else {
+      if ((node.left != null)) {
+        elements02(pen, node.left);
+      } // if has left children
+        pen.print(node.value + " ");
+      if((node.right != null)){
+          elements02(pen, node.right);
+      }
+    } // else
+    pen.flush();
   } // dump
 
   /**
